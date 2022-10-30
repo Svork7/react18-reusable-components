@@ -8,6 +8,7 @@ import Counter from './components/Counter'
 import Button from './components/Button'
 import Person from './components/Person'
 import persons from './data/persons'
+import Reset from './components/Reset'
 
 const btnNames = ['Press me', 'Push me', 'Click me']
 
@@ -17,6 +18,11 @@ function App() {
   const incrementCount = () => {
     setCount(count + 1)
     console.log(count)
+  }
+
+  const buttonStyle = { backgroundColor: 'lightgreen' }
+  const resetCount = () => {
+    setCount(0)
   }
   return (
     <div className="App">
@@ -32,6 +38,14 @@ function App() {
       {btnNames.map((btnName, index) => {
         return <Button onClick={incrementCount} btnName={btnName} key={index} />
       })}
+      {count > 0 && (
+        <div>
+          <Reset style={buttonStyle} onClick={resetCount}>
+            Reset
+          </Reset>
+        </div>
+      )}
+
       {/*передача свойства напрямую
       <Button count={count} onClick={setCount} />
   "*/}
