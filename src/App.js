@@ -9,6 +9,7 @@ import Button from './components/Button'
 import Person from './components/Person'
 import persons from './data/persons'
 import Reset from './components/Reset'
+import Card from './components/Card'
 
 const btnNames = ['Press me', 'Push me', 'Click me']
 
@@ -27,6 +28,7 @@ function App() {
   return (
     <div className="App">
       <MyComponent />
+      <Card />
       <OtherComponent />
       <PetInfo animal="cat" age={9} hasPet />
       <PetInfo animal="other cat" age="5" hasPet={true} />
