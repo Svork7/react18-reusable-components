@@ -11,6 +11,7 @@ import persons from './data/persons'
 import Reset from './components/Reset'
 import Card from './components/Card'
 import Login from './components/Login'
+import Wrapper from './components/Wrapper'
 
 const btnNames = ['Press me', 'Push me', 'Click me']
 
@@ -67,6 +68,15 @@ function App() {
       })}
       {/*Неконтролируемый инпут*/}
       <Login />
+      {
+        //передача компонента через свойство children
+      }
+      <Wrapper color="lightblue">
+        <h4>text inside of wrapper</h4>
+      </Wrapper>
+      <Wrapper color="lightgreen">
+        <h4>text inside of wrapper</h4>
+      </Wrapper>
     </div>
   )
 }
