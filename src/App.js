@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import MyComponent from './components/MyComponent'
 import OtherComponent from './components/OtherComponent'
 import PetInfo from './components/PetInfo'
@@ -16,7 +16,16 @@ import Wrapper from './components/Wrapper'
 const btnNames = ['Press me', 'Push me', 'Click me']
 
 function App() {
+  const [todo, setTodo] = useState(null)
+  //для асинхронных функций используется хук useEffect, для того чтобы избежать бесконечного ререндеринга. Функция принимает 2 аргумента
+  useEffect(() => {
+    console.log('Callback in useEffect called')
+    fetch('https://jsonplaceholder.typicode.com/todos/2')
+      .then((response) => response.json())
+      .then((json) => setTodo(json))
+  }, []) /*[] - это массив зависимостейб если он пустой - фуекция выполняется 1 раз, чтобы функция вызывалась по мере изменения тех или иных переменных их нужно добавлять в массив зависимостей*/
   console.log('App rendered')
+  console.log(todo)
   const [count, setCount] = useState(0)
   const incrementCount = () => {
     setCount(count + 1)
@@ -71,11 +80,14 @@ function App() {
       {
         //передача компонента через свойство children
       }
+      {/*вывод результата запроса*/}
+      {todo && <h3>{todo.title}</h3>}
+
       <Wrapper color="lightblue">
         <h4>text inside of wrapper</h4>
       </Wrapper>
       <Wrapper color="lightgreen">
-        <h4>text inside of wrapper</h4>
+        <h4>another text inside of wrapper</h4>
       </Wrapper>
     </div>
   )
