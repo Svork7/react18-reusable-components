@@ -19,3 +19,17 @@ button {
   cursor: pointer;
   margin: 20px;
 }
+
+form {
+  font-size: 26px;
+}
+
+input {
+  margin: 15px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+label {
+  display: block;
+}

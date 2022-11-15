@@ -10,6 +10,7 @@ import Person from './components/Person'
 import persons from './data/persons'
 import Reset from './components/Reset'
 import Card from './components/Card'
+import Login from './components/Login'
 
 const btnNames = ['Press me', 'Push me', 'Click me']
 
@@ -64,6 +65,8 @@ function App() {
       {persons.map((person) => {
         return <h3>{person.firstName}</h3>
       })}
+      {/*Неконтролируемый инпут*/}
+      <Login />
     </div>
   )
 }
