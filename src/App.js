@@ -12,6 +12,7 @@ import Reset from './components/Reset'
 import Card from './components/Card'
 import Login from './components/Login'
 import Wrapper from './components/Wrapper'
+import Posts from './components/Posts'
 
 const btnNames = ['Press me', 'Push me', 'Click me']
 
@@ -58,11 +59,9 @@ function App() {
           </Reset>
         </div>
       )}
-
       {/*передача свойства напрямую
       <Button count={count} onClick={setCount} />
   "*/}
-
       {/*Из массива напрямую
       <Button onClick={incrementCount} btnName={'Нажми меня'} />
       <Button onClick={incrementCount} btnName={btnNames[0]} />
@@ -82,13 +81,13 @@ function App() {
       }
       {/*вывод результата запроса*/}
       {todo && <h3>{todo.title}</h3>}
-
       <Wrapper color="lightblue">
         <h4>text inside of wrapper</h4>
       </Wrapper>
       <Wrapper color="lightgreen">
         <h4>another text inside of wrapper</h4>
       </Wrapper>
+      <Posts />
     </div>
   )
 }
