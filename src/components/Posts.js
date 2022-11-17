@@ -1,4 +1,5 @@
 //Компонент в котором создается запрос на сервер по сообщениям, они обрабатфываются и выводятся (каждый пост дополнительно отконфигурирован в компоненте Post)
+//использование fetch
 // Для создания запроса необходимо использовать и useState и useEffect
 import { useEffect, useState } from 'react'
 import Post from './Post'
@@ -10,19 +11,34 @@ function Posts() {
   //лоадеp
   const [isLoading, setIsLoading] = useState(true)
 
+  //Использование синтаксиса async/await
+  //необходимо использовать IIFE
   useEffect(() => {
-    console.log('Callback in useEffect called')
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((res) => res.json())
-      .then((posts) => {
-        //console.log(posts)
+    ;(async function fetchData() {
+      try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+        const posts = await res.json()
         setPosts(posts)
-      })
-      //отлов, обработка и вывод ошибок
-      .catch((error) => setError(error.message))
-      //процесс загрузки завершен
-      .finally(() => setIsLoading(false))
+      } catch (error) {
+        setError(error.message)
+      }
+      setIsLoading(false)
+    })()
   }, [])
+
+  // useEffect(() => {
+  //   console.log('Callback in useEffect called')
+  //   fetch('https://jsonplaceholder.typicode.com/posts')
+  //     .then((res) => res.json())
+  //     .then((posts) => {
+  //       //console.log(posts)
+  //       setPosts(posts)
+  //     })
+  //     //отлов, обработка и вывод ошибок
+  //     .catch((error) => setError(error.message))
+  //     //процесс загрузки завершен
+  //     .finally(() => setIsLoading(false))
+  // }, [])
 
   //лоадер. Можно добавлять анимацию и что угодно. Ожидает finally и прекращается
   //перенесено вниз и выполняется тернарным оператором

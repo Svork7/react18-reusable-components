@@ -1,0 +1,9 @@
+.info {
+  border: 10px solid red;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.myOtherButton {
+  background-color: purple;
+}

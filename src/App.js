@@ -13,6 +13,7 @@ import Card from './components/Card'
 import Login from './components/Login'
 import Wrapper from './components/Wrapper'
 import Posts from './components/Posts'
+import Info from './components/Info'
 
 const btnNames = ['Press me', 'Push me', 'Click me']
 
@@ -87,6 +88,7 @@ function App() {
       <Wrapper color="lightgreen">
         <h4>another text inside of wrapper</h4>
       </Wrapper>
+      <Info />
       <Posts />
     </div>
   )
